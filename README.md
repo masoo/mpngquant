@@ -22,7 +22,9 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+```ruby
+o, s = Mpngquant::Pngquant.optimize(infile: "./spec/test.jpg", quality: "50-80")
+```
 
 ## Development
 
