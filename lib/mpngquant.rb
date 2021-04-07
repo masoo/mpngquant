@@ -7,6 +7,17 @@ module Mpngquant
 
   class Pngquant
     class << self
+      # Whether pngquant exists or not?
+      # @return [True] "pngquant" exists,
+      #         [False] "pngquant" NOT exists
+      def supported?
+        args = ["pngquant", "--version"]
+        _, s = Open3.capture2(*args)
+        s
+      rescue Errno::ENOENT
+        false
+      end
+
       def optimize(infile:, force: nil, skip_if_larger: nil,
         ext: nil, quality: nil, speed: nil, nofs: nil,
         posterize: nil, strip: nil, verbose: nil)
